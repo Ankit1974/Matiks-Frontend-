@@ -78,10 +78,10 @@ const LeaderboardScreen: React.FC = () => {
         useCallback(() => {
             fetchLeaderboard(true);
 
-            // polling on every 5 seconds
+
             const interval = setInterval(() => {
                 fetchLeaderboard(true);
-            }, 5000);
+            }, 100000);
 
             return () => clearInterval(interval);
         }, [])
