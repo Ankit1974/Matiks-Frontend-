@@ -29,14 +29,15 @@ const BottomTabNavigator: React.FC = () => {
                     borderTopWidth: 0,
                     elevation: 10,
                     paddingTop: 8,
-                    paddingBottom: insets.bottom > 0 ? insets.bottom - 4 : 8,
-                    height: 60 + (insets.bottom > 0 ? insets.bottom - 10 : 0),
+                    paddingBottom: insets.bottom > 0 ? insets.bottom : 8,
+                    height: 70 + (insets.bottom > 0 ? insets.bottom - 10 : 0),
                 },
                 tabBarActiveTintColor: colors.primary,
                 tabBarInactiveTintColor: colors.textMuted,
                 tabBarLabelStyle: {
                     fontSize: 12,
                     fontWeight: '600',
+                    marginBottom: 4,
                 },
             }}
         >
