@@ -28,15 +28,11 @@ export interface UpdateUserScoreResponse {
     user: UserWithRank;
 }
 
-// Backend API base URL
-const getBaseURL = (): string => {
-    if (Platform.OS === 'android') {
-        return 'http://10.0.2.2:8080';
-    }
-    return 'http://localhost:8080';
-};
 
-const API_BASE_URL = getBaseURL();
+const url = process.env.EXPO_PUBLIC_BACKEND_API_URL;
+// Backend API base URL
+
+const API_BASE_URL = url;
 
 const apiClient = axios.create({
     baseURL: API_BASE_URL,
