@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import {
     KeyboardAvoidingView,
     Platform,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useFocusEffect } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { getUserByUsername, UserWithRank } from '../../services/api';
 import SearchBar from '../../components/SearchBar';
@@ -20,6 +21,21 @@ const SearchScreen: React.FC = () => {
     const [user, setUser] = useState<UserWithRank | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
+
+    // Clear search
+    useFocusEffect(
+        useCallback(() => {
+            setUsername('');
+            setUser(null);
+            setError(null);
+
+            return () => {
+                setUsername('');
+                setUser(null);
+                setError(null);
+            };
+        }, [])
+    );
 
     // Search 
     const handleSearch = async () => {
